@@ -26,6 +26,9 @@ func main() {
 	fmt.Println(strings.Repeat("=", 80))
 	reversedWords = reverseWordsWithoutAPI("This is reversed without API methods")
 	fmt.Printf("This is reversed without API: %s\n", reversedWords)
+	fmt.Println(strings.Repeat("=", 80))
+	reversedWords = reverseStingAndThenEachWord("This is just testing")
+	fmt.Println(reversedWords)
 }
 
 func reverseString(str string) string {
@@ -98,17 +101,17 @@ func reverseWordsWithRange(str string) string {
 func reverseWordsWithoutAPI(str string) string {
 	chars := []rune(str)
 	result := ""
-	length := len(chars)
+	l := len(chars)
 	i := 0
-	for i < length {
-		for i < length && chars[i] == ' ' {
+	for i < l {
+		for i < l && chars[i] == ' ' {
 			i++
 		}
-		if i >= length {
+		if i >= l {
 			break
 		}
 		j := i + 1
-		for j < length && chars[j] != ' ' {
+		for j < l && chars[j] != ' ' {
 			j++
 		}
 		sub := chars[i:j]
@@ -120,4 +123,27 @@ func reverseWordsWithoutAPI(str string) string {
 		i = j + 1
 	}
 	return result
+}
+
+func reverseStingAndThenEachWord(str string) string {
+	chars := []rune(str)
+	l := len(chars)
+	reverseChars(chars, 0, l-1)
+	start := 0
+	for end := 0; end < l; end++ {
+		if chars[end] == ' ' {
+			reverseChars(chars, start, end-1)
+			start = end + 1
+		}
+	}
+	reverseChars(chars, start, l-1)
+	return string(chars)
+}
+
+func reverseChars(chars []rune, start, end int) {
+	for start < end {
+		chars[start], chars[end] = chars[end], chars[start]
+		start++
+		end--
+	}
 }
