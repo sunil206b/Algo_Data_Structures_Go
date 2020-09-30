@@ -5,6 +5,30 @@ import (
 	"strings"
 )
 
+//Write a function that reverses a string. The input is given as a string.
+
+//You may assume all the characters consist of printable ascii characters.
+
+//Example :
+//		Input: ["hello"]
+//		Output: ["olleh"]
+
+//Given an input string, reverse the string word by word.
+
+//A word is defined as a sequence of non-space characters.
+
+//Notice that the input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.
+
+//Also, notice that you need to reduce multiple spaces between two words to a single space in the reversed string.
+
+//Example 1:
+//		Input: s = "the sky is blue"
+//		Output: "blue is sky the"
+
+//Example 2:
+//		Input: s = "Alice does not even like bob"
+//		Output: "bob like even not does Alice"
+
 func main() {
 	reversedStr := reverseString("traditional for loop")
 	fmt.Printf("String reversed with traditional for loop: %s\n", reversedStr)
