@@ -102,8 +102,7 @@ func reverseWordsWithoutAPI(str string) string {
 	chars := []rune(str)
 	result := ""
 	l := len(chars)
-	i := 0
-	for i < l {
+	for i := 0; i < l; {
 		for i < l && chars[i] == ' ' {
 			i++
 		}
@@ -141,9 +140,7 @@ func reverseStingAndThenEachWord(str string) string {
 }
 
 func reverseChars(chars []rune, start, end int) {
-	for start < end {
+	for ; start < end; start, end = start+1, end-1 {
 		chars[start], chars[end] = chars[end], chars[start]
-		start++
-		end--
 	}
 }
