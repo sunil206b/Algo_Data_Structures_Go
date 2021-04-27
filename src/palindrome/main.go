@@ -22,14 +22,17 @@ import (
 func main() {
 	fmt.Println(isPalindrome("anNA"))
 	fmt.Println(isPalindrome("a man, a plan, a canal: Panama"))
+	fmt.Println(isPalindrome("race a car"))
+	fmt.Printf("%s\n", strings.Repeat("#", 50))
 	fmt.Println(isPalindromeSanitize("anNA"))
 	fmt.Println(isPalindromeSanitize("a man, a plan, a canal: Panama"))
+	fmt.Println(isPalindromeSanitize("race a car"))
 }
 
 func isPalindrome(str string) bool {
 	chars := []rune(str)
 	l := len(chars)
-	for start, end := 0, l-1; start < end; start, end = start+1, end-1 {
+	for start, end := 0, l-1; start < end ; start, end = start+1, end-1 {
 		for start < end && !unicode.IsLetter(chars[start]) {
 			start++
 		}
